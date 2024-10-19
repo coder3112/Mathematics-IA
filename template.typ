@@ -107,11 +107,13 @@
   })
   
   box(inset: (bottom: 2pt), text(17pt, weight: "bold", fill: colour_fg, title))
+  v(-7pt)
+  line(length: 93%)
   if subtitle != none {
     parbreak()
     box(text(14pt, fill: colour_fg.lighten(20%), subtitle))
   }
-  
+  v(-10pt)
   // table of contents
   text(outline(depth: 3, indent: 2em, title: "Table of Contents"))
   
