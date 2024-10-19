@@ -2,6 +2,7 @@
 
 
 #import "introduction.typ": *
+#import "matrices.typ": *
 
 #show: template.with(
   title: "Transformation of Quadrilaterals into Rectangles",
@@ -20,3 +21,5 @@
 )
 
 #introduction
+#pagebreak(weak: true)
+#matrices
