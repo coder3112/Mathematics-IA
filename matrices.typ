@@ -16,7 +16,7 @@ $M_(i j)$ denotes the element present in row $i$ and column $j$ in matrix $M$.
 This is a matrix where the number of columns and rows are different.
 
 == Transpose of a matrix
-A tranpose operation on a matrix acts to switch the columns and rows of a matrix. It is represented by a superscript $T$: $A^T$ is the transpose matrix of $A$.
+A transpose operation on a matrix acts to switch the columns and rows of a matrix. It is represented by a superscript $T$: $A^T$ is the transpose matrix of $A$.
 #example[
   $
   mat(
@@ -77,7 +77,7 @@ A B = mat(
 $
 #set math.mat(column-gap: 0% + 0.5em)
 = Transformation Matrices
-A matrix represents a transformation of points to allow for stretching, squeezing, translation and rotation.
+A matrix represents a transformation of points to allow for stretching, squeezing, translation and rotation etc. which change the coordinates of a set of points while preserving a set of properties.
 
 For a transformation $T$ on a point $x$, represented in column-vector form, it can be written as $T(x) = A x$ where $A$ is the transformation matrix of T.
 
@@ -85,5 +85,4 @@ For a transformation $T$ on a point $x$, represented in column-vector form, it c
 An _eigenvector_ of a matrix is a vector whose direction remains unchanged when the matrix is used to transform it. That means, the vector is only scaled by a constant factor. More precisely, if $T$ is the transformation matrix, $v$ is the vector and $lambda$ is the constant scaling vector:
 $ T v = v lambda $
 The _eigenvalue_ is the corresponding scale factor, $lambda$.
-
 ]

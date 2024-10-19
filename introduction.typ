@@ -20,11 +20,13 @@ We consider the challenge of capturing perfectly rectangular objects, such as a 
 )<origalg>
 
 The aim of this investigation is to explore the mathematics behind this transformation, and hence answer the question \
-#align( 
-  box(inset: 2pt, outset: 2pt, radius: 1pt, stroke: 1pt)[
-    *How does one generate a transformation between an arbitrary convex quadrilateral and an arbitrary rectangle?*
-  ]
-)
+#align(center)[
+  #figure(
+    box(inset: 2pt, outset: 2pt, radius: 1pt, stroke: 1pt)[
+      *How does one generate a transformation between an arbitrary convex quadrilateral and an arbitrary rectangle*
+    ]
+  )<researchquestion>
+]
 
 = Formulating the Problem
 #columns(2, gutter: 40pt)[

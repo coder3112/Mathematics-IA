@@ -1,8 +1,8 @@
 #import "template.typ": *
 
-
 #import "introduction.typ": *
 #import "matrices.typ": *
+#import "split_cases.typ": *
 
 #show: template.with(
   title: "Transformation of Quadrilaterals into Rectangles",
@@ -23,3 +23,4 @@
 #introduction
 #pagebreak(weak: true)
 #matrices
+#split_cases
