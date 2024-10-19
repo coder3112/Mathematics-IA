@@ -1,1 +1,0 @@
-+ Pending TODO: is T(ABCD)=A'B'C'D' correct? Could I do better?
