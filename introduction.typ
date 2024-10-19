@@ -95,6 +95,8 @@ grid(
 caption: "Transformation of " + $A B C D$ + " to " + $A'B'C'D'$
 )<desired_output>
 ]
+== To Find
+#v(12pt)
 #align(center)[
   #box(stroke: 1pt, inset: 2pt, outset: 2pt)[
     *Find a transformation $T$ such that $T(A B C D) = A'B'C'D'$*
