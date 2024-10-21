@@ -76,6 +76,8 @@ A B = mat(
 )
 $
 #set math.mat(column-gap: 0% + 0.5em)
+That is, $ A B_(i j) = sum_(k=1)^(n) a_(i k) b_(k j)$
+
 = Transformation Matrices
 A matrix represents a transformation of points to allow for stretching, squeezing, translation and rotation etc. which change the coordinates of a set of points while preserving a set of properties.
 

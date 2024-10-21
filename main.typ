@@ -3,6 +3,7 @@
 #import "introduction.typ": *
 #import "matrices.typ": *
 #import "split_cases.typ": *
+#import "affine.typ": *
 
 #show: template.with(
   title: "Transformation of Quadrilaterals into Rectangles",
@@ -24,3 +25,5 @@
 #pagebreak(weak: true)
 #matrices
 #split_cases
+#pagebreak(weak: true)
+#affine
