@@ -1,6 +1,7 @@
 #import "@preview/cetz:0.3.0"
 
 #let affine = [
+  #set math.mat(delim: "[")
   = Affine Transformations
   == Rotation
   A rotation matrix $R$ is represented by:
@@ -36,7 +37,7 @@
     content((0.9,-0.4), $ C $, anchor: "north")
     line((0.9, -0.3), (-1.5, 0.1))
     content((-1.5, 0), $ D $, anchor: "north")
-    line((-1,1), (-1.5, 0.08))
+    line((-1,1), (-1.5, 0.1))
   }),
     cetz.canvas(length: 1.5cm, {
     import cetz.draw: *
@@ -103,7 +104,30 @@
   )
   $
 
-  To confirm that this works, we will use @rotated_output again. The coordinates for the vertices are as follows: 
+  To confirm that this works, we will use @rotated_output again. The coordinates for the vertices are as follows. 
+  $
+  A = mat(-1;1) & #h(20pt) A' = mat(-1.41;0) \
+  D = mat(-1.5;0.1) & #h(20pt) D' = mat(-1.13;-0.99)\
+  \
+  $
+  The numbers for the transformed points were calculated, and the ones written above are merely approximations: 
+  This gives
+  $
+  R_#text("coordinates") = mat(
+    0.751, -0.747;
+    0.747,0.751
+  )
+  $
+  The correct matrix is
+  $
+  R_#text("coordinates") = mat(
+    0.707, -0.707;
+    0.707,0.707
+  )
+  $
+  We can clearly see that the matrix we got from our formula is almost correct, and we can chalk up the minute differences to calculation error due to approximation.
+  This can also be seen here:
+  #figure(caption: "Original Quadrilateral and its rotation through 2 different matrices", image("rotated_matrix.png", height: 30%))
   
   // However, computing trigonometric functions would be incredibly hard. Instead, we will use the dot and cross products, since they incorporate that into nicer vector/matrix algebra.
 
