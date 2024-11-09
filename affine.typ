@@ -29,7 +29,6 @@
       ),
       content: (padding: 1pt)
     )
-    rotate(z: 45deg)
     line((-1, 1), (0.3, 1))
     content((-1.1,1), $ A $, anchor: "east")
     content((0.4,1), $ B $, anchor: "west")
@@ -56,6 +55,7 @@
       ),
       content: (padding: 1pt)
     )
+    rotate(z: 45deg)
     line((-1, 1.2), (0.3, 1.2))
     content((-1.1,1.2), $ A' $, anchor: "east")
     content((0.4,1.2), $ B' $, anchor: "west")
