@@ -127,11 +127,11 @@
   $
   We can clearly see that the matrix we got from our formula is almost correct, and we can chalk up the minute differences to calculation error due to approximation.
   This can also be seen here:
-  #figure(caption: "Original Quadrilateral and its rotation through 2 different matrices", image("rotated_matrix.png", height: 30%))
-  
-  // However, computing trigonometric functions would be incredibly hard. Instead, we will use the dot and cross products, since they incorporate that into nicer vector/matrix algebra.
+  #figure(caption: "Original Quadrilateral and its rotation through 2 different matrices", image("rotated_matrix.png", height: 34%))
 
   
-  
-  // *PLEASE NOTE THAT THE REST OF THE MATH WAS SHOWN IN THE PREVIOUSLY SUBMITTED DRAFT, AND WE DISCUSSED IT IN OUR MEETING. I AM WRITING THE DRAFT IN A NEW DOCUMENT NOW TO INCORPORATE OUR DISCUSSION, WHICH IS WHY THIS DOCUMENT DOES NOT CONTAIN THAT (YET)*
+  == Squeezing
+
+
+  == Stretching
 ]

@@ -1,4 +1,4 @@
-#import "template.typ": example
+#import "template.typ": example, proof
 
 #let matrices = [
 #set math.mat(delim: "[")
@@ -40,8 +40,8 @@ Such a matrix has eigenvectors which are perpendicular to each other.
   $
 ]
 
-= Matrix Arithmetic
-== Multiplying by a scalar
+== Matrix Arithmetic
+=== Multiplying by a scalar
 Each entry in the matrix is multiplied by the scalar.
 #example[
   $
@@ -49,7 +49,7 @@ Each entry in the matrix is multiplied by the scalar.
   $
 ]
 
-== Multiplying two matrices
+=== Multiplying two matrices
 For matrix multiplication to be valid, the number of columns in the first matrix must be equal to the number of rows in the second matrix. 
 Given
 $
@@ -78,7 +78,7 @@ $
 #set math.mat(column-gap: 0% + 0.5em)
 That is, $ A B_(i j) = sum_(k=1)^(n) a_(i k) b_(k j)$
 
-= Transformation Matrices
+== Transformation Matrices
 A matrix represents a transformation of points to allow for stretching, squeezing, translation and rotation etc. which change the coordinates of a set of points while preserving a set of properties.
 
 For a transformation $T$ on a point $x$, represented in column-vector form, it can be written as $T(x) = A x$ where $A$ is the transformation matrix of T.
@@ -87,4 +87,34 @@ For a transformation $T$ on a point $x$, represented in column-vector form, it c
 An _eigenvector_ of a matrix is a vector whose direction remains unchanged when the matrix is used to transform it. That means, the vector is only scaled by a constant factor. More precisely, if $T$ is the transformation matrix, $v$ is the vector and $lambda$ is the constant scaling vector:
 $ T v = v lambda $
 The _eigenvalue_ is the corresponding scale factor, $lambda$.
+
+== Singular Values
+Consider any rectangular matrix $A$. Then, obtain the matrix $S_L$ and $S_R$ as follows:
+$ 
+S_L = A dot A^T \
+S_R = A^T dot A.
+$
+These matrices are symmetric.
+#proof[
+  $ 
+  (S_L)^T &= (A A^T)^T = (A^T)^T A^T = A A^T \
+  (S_R)^T &= (A^T A)^T = A^T (A^T)^T = A^T A
+  $
+]
+
+Next, we consider the eigenvectors of each. The eigenvectors of $S_L$ are called the _left singular vectors_. Those of $S_R$ are called _right singular vectors_
+
+Next, we use the fact that $S_L$ and $S_R$ are _Positive Definite Matrices_. This simply implies that if we take their eigenvalues, then:
++ All eigenvalues are non negative, i.e. $lambda gt.eq 0$
++ $S_L$ and $S_R$ have the same(non-zero) negative eigenvalues
+  + If we arrange the eigenvalues of both in descending order, then the overlapping ones are identical
+  + The eigenvalue(s) remaining without overlap must be 0.
++ Now, if we take the non-zero, shared eigenvalues, say $lambda_i$, then the singular values of the original rectangular matrix are: $ sigma_i = sqrt(lambda_i) $
+
+=== Singular Value Decomposition
+Any matrix $A$ can be decomposed into three matrices:
+$ A = U Sigma V^T $, where
++ $U$ contains the left singular vectors of $A$ in descending order.
++ $V$ contains the right singular vectors of $A$ in descending order. In the SVD, we consider the transpose of this matrix.
++ $Sigma$ is a matrix of the same dimensions as $A$. The numbers on the diagonal are the singular values of $A$, arranged in descending order. All other values are 0. 
 ]
