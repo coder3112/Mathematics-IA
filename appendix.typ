@@ -7,6 +7,8 @@
   #show link: underline
   Inspired by #link("https://articulatedrobotics.xyz/tutorials/coordinate-transforms/rotation-matrices-2d/")
   #let rot_code = read("rot_matrix.m")
+  #show raw: it => text(it, font: "IBM Plex Mono")
+  )
   #code( 
     stepnumber:1,
     numbers: true,
