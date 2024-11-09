@@ -111,10 +111,12 @@ Next, we use the fact that $S_L$ and $S_R$ are _Positive Definite Matrices_. Thi
   + The eigenvalue(s) remaining without overlap must be 0.
 + Now, if we take the non-zero, shared eigenvalues, say $lambda_i$, then the singular values of the original rectangular matrix are: $ sigma_i = sqrt(lambda_i) $
 
-=== Singular Value Decomposition
+== Singular Value Decomposition
 Any matrix $A$ can be decomposed into three matrices:
 $ A = U Sigma V^T $, where
 + $U$ contains the left singular vectors of $A$ in descending order.
 + $V$ contains the right singular vectors of $A$ in descending order. In the SVD, we consider the transpose of this matrix.
 + $Sigma$ is a matrix of the same dimensions as $A$. The numbers on the diagonal are the singular values of $A$, arranged in descending order. All other values are 0. 
+
+This is a very complex operation, and only a short summary is provided above. Indeed, if we use this method, we will use a computer to do the numerical computation for us.
 ]
