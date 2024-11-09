@@ -1,4 +1,5 @@
 #import "@preview/cetz:0.3.0"
+#import "template.typ": example
 
 #let affine = [
   #set math.mat(delim: "[")
@@ -131,7 +132,34 @@
 
   
   == Squeezing
+  This is a simple transformation that preserves area, and "squeezes" the shape such that its width and height are increased proportionally.
+  It is represented by the matrix:
+  $
+  T = mat(
+    a, 0;
+    0, 1/a;
+  )
+  $
 
+  #example[
+    #figure(
+      cetz.canvas(length: 1.5cm, {
+      import cetz.draw: *
+    
+      set-style(
+        mark: (fill: black, scale: 2),
+        stroke: (thickness: 0.4pt, cap: "round"),
+        angle: (
+          radius: 0.3,
+          label-radius: .22,
+          fill: green.lighten(80%),
+          stroke: (paint: green.darken(50%))
+        ),
+        content: (padding: 1pt)
+      )
+      })
+    )
+  ]
 
   == Stretching
 ]
