@@ -24,9 +24,9 @@ Based on this, we can classify our #link(<researchquestion>)[research question] 
     node((0,0), "Transformations"),
     node((-1,0.3), "Affine"),
     node((1,0.3), "Non-Affine"),
-    node((-0.83,0.5), "Rotation", inset: 2pt, stroke: 0pt),
+    node((-0.858,0.5), "Rotation", inset: 2pt, stroke: 0pt),
     node((-0.83,0.65), "Squeezing", inset: 2pt, stroke: 0pt),
-    node((-0.8,0.8), "Stretching", inset: 2pt, stroke: 0pt),
+    node((-0.89,0.8), "Scaling", inset: 2pt, stroke: 0pt),
     node((0.95,0.5), "Warping", inset: 2pt, stroke: 0pt),
     {
   		let arrow(a, b, label, paint, ..args) = {

@@ -196,6 +196,14 @@
   == Scaling
   This transformation enlarges or shrinks the distances by a constant factor in both directions.
 
+  The matrix to transform is:
+  $
+  T = mat(
+    a, 0;
+    0, a
+  )
+  $
+
   #example[
     #figure(
       cetz.canvas(length: 1.5cm, {
@@ -219,13 +227,17 @@
       content((1,1), $A$, anchor: "east")
       line((3.5,0.5), (5.5,0.5), mark: (end: "stealth"))
       rect((6,1),(10,-1))
-      content((6,1), $B'$, anchor: "east")
+      content((6,1), $A'$, anchor: "east")
       content((6,-1), $D'$, anchor: "east")
       content((10,-1), $C'$, anchor: "west")
-      content((10,1), $A'$, anchor: "west")
+      content((10,1), $B'$, anchor: "west")
       }),
       caption: "A scaling mapping"
     )<scale_output>
   ]
+  In @scale_output, we scale the quadrilateral by a factor of 2. This means both the length and width are 2 times the original in the final quadrilateral.
+  So, our matrix for transformation is:
+  $
   
+  $
 ]
