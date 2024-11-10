@@ -164,20 +164,20 @@
       content((1,1), $A$, anchor: "east")
       line((3.5,0.5), (5.5,0.5), mark: (end: "stealth"))
       rect((6,1),(7.5,-0.33))
-      content((5.6,1), $B'$, anchor: "west")
+      content((5.6,1), $A'$, anchor: "west")
       content((6,-0.33), $D'$, anchor: "east")
       content((7.5,-0.33), $C'$, anchor: "west")
-      content((7.9,1), $A'$, anchor: "east")
+      content((7.9,1), $B'$, anchor: "east")
       }),
       caption: "A squeeze mapping"
     )<squeeze_output>
   ]
   In @squeeze_output, a rectangle is transformed as follows:
   $
-  A = (1,1) #h(20pt) & A' = (7.5,1)\
-  B = (3,1) #h(20pt) & B' = (6,1)\
-  C = (3,0) #h(20pt) & C' = (7.5,-0.33)\
-  D = (1,0) #h(20pt) & D' = (6,-0.33)\
+  A = (1,1) #h(20pt) & A' = (0.75,1.33)\
+  B = (3,1) #h(20pt) & B' = (2.25,1.33)\
+  C = (3,0) #h(20pt) & C' = (2.25,0)\
+  D = (1,0) #h(20pt) & D' = (0.75, 0)\
   $
   Both rectangles have an area of $2 #text(" cm")^2$, and the length and width have been scaled to $75%$ and $133%$, i.e. $3/4$ and $4/3$ respectively. We see, since this has been done in proportion, this is a squeeze mapping.
 
@@ -193,5 +193,39 @@
     caption: "Squeeze matrix confirmation", image("squeeze_matrix.png", height: 40%)
   )
 
-  == Stretching
+  == Scaling
+  This transformation enlarges or shrinks the distances by a constant factor in both directions.
+
+  #example[
+    #figure(
+      cetz.canvas(length: 1.5cm, {
+      import cetz.draw: *
+    
+      set-style(
+        mark: (fill: black, scale: 2),
+        stroke: (thickness: 0.4pt, cap: "round"),
+        angle: (
+          radius: 0.3,
+          label-radius: .22,
+          fill: green.lighten(80%),
+          stroke: (paint: green.darken(50%))
+        ),
+        content: (padding: 1pt)
+      )
+      rect((3,1),(1,0))
+      content((3,1), $B$, anchor: "west")
+      content((1,0), $D$, anchor: "east")
+      content((3,0), $C$, anchor: "west")
+      content((1,1), $A$, anchor: "east")
+      line((3.5,0.5), (5.5,0.5), mark: (end: "stealth"))
+      rect((6,1),(10,-1))
+      content((6,1), $B'$, anchor: "east")
+      content((6,-1), $D'$, anchor: "east")
+      content((10,-1), $C'$, anchor: "west")
+      content((10,1), $A'$, anchor: "west")
+      }),
+      caption: "A scaling mapping"
+    )<scale_output>
+  ]
+  
 ]
