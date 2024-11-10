@@ -8,6 +8,7 @@
   #show link: underline
   #let rot_code = read("rot_matrix.m")
   #show raw: it => text(it, font: "IBM Plex Mono")
+  #set raw(theme: "sublime.tmTheme")
   #code( 
     stepnumber:1,
     numbers: true,

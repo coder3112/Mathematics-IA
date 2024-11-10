@@ -2,7 +2,7 @@ https://github.com/typst/typst/issues/344: Thanks Willakat
 
 #let code(
     caption: none,             // content of caption bubble (string, none)
-    bgcolor: rgb(253,253,255),   // back ground color (color)
+    bgcolor: rgb("#f9f1d7"),   // back ground color (color)
     strokecolor: 1pt + rgb(0,0,0).darken(100%), // frame color (color)
     hlcolor: auto,             // color to use for highlighted lines (auto, color)
     width: 100%,
