@@ -158,11 +158,40 @@
         content: (padding: 1pt)
       )
       rect((3,1),(1,0))
-      line((3.5,0.5), (4.5,0.5), mark: (end: "stealth"))
-      rect((6,1),(5,-1))
-      })
-    )
+      content((3,1), $B$, anchor: "west")
+      content((1,0), $D$, anchor: "east")
+      content((3,0), $C$, anchor: "west")
+      content((1,1), $A$, anchor: "east")
+      line((3.5,0.5), (5.5,0.5), mark: (end: "stealth"))
+      rect((6,1),(7.5,-0.33))
+      content((5.6,1), $B'$, anchor: "west")
+      content((6,-0.33), $D'$, anchor: "east")
+      content((7.5,-0.33), $C'$, anchor: "west")
+      content((7.9,1), $A'$, anchor: "east")
+      }),
+      caption: "A squeeze mapping"
+    )<squeeze_output>
   ]
+  In @squeeze_output, a rectangle is transformed as follows:
+  $
+  A = (1,1) #h(20pt) & A' = (7.5,1)\
+  B = (3,1) #h(20pt) & B' = (6,1)\
+  C = (3,0) #h(20pt) & C' = (7.5,-0.33)\
+  D = (1,0) #h(20pt) & D' = (6,-0.33)\
+  $
+  Both rectangles have an area of $2 #text(" cm")^2$, and the length and width have been scaled to $75%$ and $133%$, i.e. $3/4$ and $4/3$ respectively. We see, since this has been done in proportion, this is a squeeze mapping.
+
+  Thus, our "squeeze factor" $a$, is $3/4$. The transformation matrix $T$ will be:
+  $
+  T = mat(
+    frac(3,4),0;
+    0,frac(4,3)
+  )
+  $
+  Indeed, we can confirm this by simple matrix multiplication. This was done on a computer, and the result is shown below:
+  #figure(
+    caption: "Squeeze matrix confirmation", image("squeeze_matrix.png", height: 40%)
+  )
 
   == Stretching
 ]
