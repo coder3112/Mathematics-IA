@@ -32,4 +32,21 @@
     numbers: true,
     caption: "Code: scale_matrix.m",
   )[#raw(scale_code, lang: "matlab")]
+
+  == Homography
+  Code inspired by #link("https://web.archive.org/web/20100801071311/http://alumni.media.mit.edu/%7Ecwren/interpolator/")
+  #v(8pt)
+  #let inv_code = read("inv.m")
+  #code( 
+    stepnumber:1,
+    numbers: true,
+    caption: "Code: inv.m",
+  )[#raw(inv_code, lang: "matlab")]
+  #v(8pt)
+  #let svd_code = read("svd.m")
+  #code( 
+    stepnumber:1,
+    numbers: true,
+    caption: "Code: svd.m",
+  )[#raw(svd_code, lang: "matlab")]
 ]

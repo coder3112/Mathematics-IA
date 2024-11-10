@@ -4,7 +4,7 @@
 #let affine = [
   #set math.mat(delim: "[")
   = Affine Transformations
-  == Rotation
+  == Rotation <rot>
   A rotation matrix $R$ is represented by:
   $
   R = mat(

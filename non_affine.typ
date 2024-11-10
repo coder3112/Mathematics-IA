@@ -198,7 +198,6 @@
   described in @svd. 
   $ #text("SVD") P = U Sigma V^T $ The last singular vector of $V$ is the solution to $H$, and then we have the homography matrix to find any transformation.
   SVD has 0 error for our described case *citation needed* and is thus the best option.
-  Of course, this is far too complicated an operation to do by hand; especially for such a large matrix. Instead, we will use a computer program. 
 
   == Example
   Refer back to @desired_output reproduced below.
@@ -255,7 +254,18 @@
     }),
     ),
     )
-  ]
-  The coordinates are as follows:
-  
+  Then, we are able to generate a mapping between the two. To confirm that this works, sets of points were created inside the original quadrilateral and mapped to the final rectangle using the same homography matrix that was calculated as the mapping. The result is as follows:
+  #figure(
+    grid(
+      columns: 2,
+      figure(
+        image("final.png")
+      ),
+      figure(
+        image("final2.png")
+      ),
+    ),
+    caption: "Homography matrix calculated using Inverse and SVD respectively"
+  )
+  We can see that the final rectangle we obtain is rotated $90 degree$ clockwise, but this is easily fixable as we saw in @rot. This probably happened because the points $A, B, C, D$ were not assigned in order in the code, and is easily fixed. We see here that the difference between the inverse and SVD methods are negligible, but they can play a role in other cases. Therefore, SVD is recommended. 
 ]

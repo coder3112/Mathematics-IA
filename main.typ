@@ -33,3 +33,5 @@
 #non_affine
 #pagebreak(weak: true)
 #appendix_code
+
+// https://web.archive.org/web/20100801071311/http://alumni.media.mit.edu/%7Ecwren/interpolator/
