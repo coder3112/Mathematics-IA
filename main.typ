@@ -13,7 +13,7 @@
   font-face: "New Computer Modern",
 
   colour_fg: rgb(0,0,0),
-  colour_bg: rgb(250,250,255),
+  colour_bg: rgb(255,255,255),
   colour_accent: rgb(0,0,0),
 
   header_title:[

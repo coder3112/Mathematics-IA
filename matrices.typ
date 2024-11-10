@@ -111,7 +111,7 @@ Next, we use the fact that $S_L$ and $S_R$ are _Positive Definite Matrices_. Thi
   + The eigenvalue(s) remaining without overlap must be 0.
 + Now, if we take the non-zero, shared eigenvalues, say $lambda_i$, then the singular values of the original rectangular matrix are: $ sigma_i = sqrt(lambda_i) $
 
-== Singular Value Decomposition
+== Singular Value Decomposition <svd>
 Any matrix $A$ can be decomposed into three matrices:
 $ A = U Sigma V^T $, where
 + $U$ contains the left singular vectors of $A$ in descending order.

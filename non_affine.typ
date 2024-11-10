@@ -29,7 +29,7 @@
   + We can represent cases at "infinity", which means our solution would be completely generalisable.
   + They can often be optimised better on computers
 
-  === Converting cartesian coordinates to homogeneous coordinates
+  === Converting cartesian coordinates to homogeneous coordinates <convert_cart_homo>
   The generally accepted conversion norm is to set $W=1$ when converting, since the coordinate really remains the same relative to the plane regardless.
 
   #example[
@@ -73,4 +73,189 @@
   }),
     caption: "Projective Transforms"
   )<projective_transform>
+
+  Refer back to @projective_transform. Now, we aim to construct a relation between the two planes, $p_1$ and $p_2$.
+
+  Another way to visualise this is like so:
+  #figure(image("perspectivetransform.png", height: 30%), caption: "Source: Christopher R. Wren")<plane_ray_fig>
+
+  Here. $x, y$ represent the initial coordinates on $p_1$, while $X,Y$ represent the final coordinates on $p_2$ after transformation.
+
+  Assume that there exists a $3 times 3$ matrix H that allows the transformation from $p_1$ to $p_2$.
+  #math.equation(numbering: "(1)", block: true, [
+  $
+  p_2 = H dot p_1
+  $
+  ])<transform_basiceq>
+
+  Now, we are going to first convert the cartesian coordinates $(X, Y)$ and $(x, y)$ from @plane_ray_fig into homogeneous coordinates to take advantage of the features they provide. Since the scaling of a point does not matter in homogeneous coordinates(all of them being the same anyway), we can actually write with arbitrary $W in RR$ (Note that we implicitly convert $(x,y)$ to homogeneous coordinates as discussed in @convert_cart_homo :
+  $
+  mat(X W; Y W; W;)
+  =
+  mat(
+    h_11, h_12, h_13;
+    h_21, h_22, h_23;
+    h_31, h_32, 1;
+  )
+  mat(x;y;1)
+  $
+  Actually, however. We can simplify this slightly. $1$ can simply be assumed to be 1 in this case. We are looking for a transformation that changes perspective, i.e. a perspective transform. This is sufficient simply by having that coefficient be 1. (When it is a non-unitary value, it acts to translate bodies but that is obviously not needed here) *citation needed* So,
+  $
+  mat(X W; Y W; W;)
+  =
+  mat(
+    h_11, h_12, h_13;
+    h_21, h_22, h_23;
+    h_31, h_32, 1;
+  )
+  mat(x;y;1)
+  $
+  Now, we can begin to simplify this matrix to obtain some answers.
+  Using matrix multiplication, one has that:
+  $ W = g x + h y + 1. $
+  Also, by simply transposing terms in our equation to get (in other words, the $W$ is "factored out"  #footnote("This is not exactly precise, definition-wise. But, we are essentially re-writing the equation in a way such that the denominator acts as a way for us to get non-affine transformations,")):
+  $
+  mat(X;Y;1) = 
+  #box[
+    $
+    mat(
+      h_11, h_12, h_13;
+      h_21, h_22, h_23;
+      h_31, h_32, 1;
+    )
+    mat(x;y;1)
+    $
+  ]
+    /
+    #box[
+    $
+    mat(h_31,h_32,1)
+    mat(x;y;1)
+    $
+  ]
+  $
+  In non-vector form, this can simply be written as using matrix multiplication:
+  $
+  X = #box[
+    $
+    h_11 x + h_12 y + h_13
+    $
+  ]
+  /
+  #box[
+    $
+    h_31 x + h_32 y + 1
+    $
+  ]
+  \
+  Y = #box[
+    $
+    h_21 x + h_22 y + h_23
+    $
+  ]
+  /
+  #box[
+    $
+    h_31 x + h_32 y + 1
+    $
+  ]
+  $
+  Transpose the denominators, and simplify the equations to get:
+  $
+  X = h_11 x + h_12 y  + h_13 - h_31 X x - h_32 \
+  Y = h_21 x + h_22 y + h_23 - h_31 Y x - 1 Y y
+  $
+  We add in some zero terms for convenience, so that we can build a matrix:
+  $
+  X = h_11 x + h_12 y  + h_13 - h_21 dot 0 + h_22 dot 0 + h_23 dot 0- h_31 X x - h_32 \
+  Y = h_11 dot 0 + h_12 dot 0  + h_13 dot 0 + h_21 x + h_22 y + h_23 - h_31 Y x - 1 Y y
+  $ which gives:
+  $
+  mat(x,y,1,0,0,0,-X x,-X y; 0,0,0,x,y,1,-Y x, -Y y)
+  mat(h_11;h_12;h_13;h_21;h_22;h_23;h_31;h_32;1)
+  =
+  mat(X;Y)
+  $
+  Of course, this was taking any random points $(X, Y)$ and $(x,y)$. In reality, we have been given 4 points. Consequently, they will make an equation of the form:
+  $
+  mat(x_1,y_1,1,0,0,0,-X_1 x_1,-X_1 y_1; 0,0,0,x_1,y_1,1,-Y_1 x_1, -Y_1 y_1;dots.v;x_4,y_4,1,0,0,0,-X_4 x_4,-X_4 y_4; 0,0,0,x_4,y_4,1,-Y_4 x_4, -Y_4 y_4;)
+  mat(h_11;h_12;h_13;h_21;h_22;h_23;h_31;h_32;1)
+  =
+  mat(X_1;Y_1;dots.v;X_4;Y_4)
+  $
+  Now, if we solve this equation, we will find the matrix $H$, and we will have our solution.
+
+  == Solving
+  The simplest way to solve this would be to use the so called pseudo-inverse:
+  $
+  &A H' = B \
+  arrow.double &A^T A H' = A'T B \
+  arrow.double &H' = (A^T A)^(-1) A^T B
+  $
+  We know A and B. The $X^(-1)$ means the inverse of a matrix $X$, and can be calculated using a computer. However, not all matrices are inversible, and this method would also not be the most accurate due to some approximations having to be made.\ 
+  #line(stroke: rgb(0,0,0).lighten(60%), length: 100%)
+   Therefore, we can instead use Singular Value Decomposition as 
+  described in @svd. 
+  $ #text("SVD") P = U Sigma V^T $ The last singular vector of $V$ is the solution to $H$, and then we have the homography matrix to find any transformation.
+  SVD has 0 error for our described case *citation needed* and is thus the best option.
+  Of course, this is far too complicated an operation to do by hand; especially for such a large matrix. Instead, we will use a computer program. 
+
+  == Example
+  Refer back to @desired_output reproduced below.
+  #figure(
+    grid(
+      columns: (1fr, 1fr),
+      gutter: 3pt,
+      cetz.canvas(length: 1.5cm, {
+      import cetz.draw: *
+    
+      set-style(
+        mark: (fill: black, scale: 2),
+        stroke: (thickness: 0.4pt, cap: "round"),
+        angle: (
+          radius: 0.3,
+          label-radius: .22,
+          fill: green.lighten(80%),
+          stroke: (paint: green.darken(50%))
+        ),
+        content: (padding: 1pt)
+      )
+      line((-1, 1), (0.3, 1))
+      content((-1.1,1), $ A $, anchor: "east")
+      content((0.4,1), $ B $, anchor: "west")
+      line((0.3, 1), (0.9, -0.3))
+      content((0.9,-0.4), $ C $, anchor: "north")
+      line((0.9, -0.3), (-1.5, 0.1))
+      content((-1.5, 0), $ D $, anchor: "north")
+      line((-1,1), (-1.5, 0.08))
+      line((2.2,0.5), (3.3,0.5), mark: (end: "stealth"))
+      content((2.7,0.76), $T$, anchor: "south")
+    }),
+      cetz.canvas(length: 1.5cm, {
+      import cetz.draw: *
+      set-style(
+        stroke: (thickness: 0.7pt, cap: "round"),
+      )
+      set-style(
+        mark: (fill: black, scale: 2),
+        stroke: (thickness: 0.4pt, cap: "round"),
+        angle: (
+          radius: 0.3,
+          label-radius: .22,
+          fill: green.lighten(80%),
+          stroke: (paint: green.darken(50%))
+        ),
+        content: (padding: 1pt)
+      )
+      rect((-1,1), (0.2,-0.3))
+      content((-1,1), "A'", anchor: "east")
+      content((0.2,1), "B'", anchor: "west")
+      content((-1,-0.3), "D'", anchor: "east")
+      content((0.2,-0.3), "C'", anchor: "west")
+    }),
+    ),
+    )
+  ]
+  The coordinates are as follows:
+  
 ]
