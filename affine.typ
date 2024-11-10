@@ -157,6 +157,9 @@
         ),
         content: (padding: 1pt)
       )
+      rect((3,1),(1,0))
+      line((3.5,0.5), (4.5,0.5), mark: (end: "stealth"))
+      rect((6,1),(5,-1))
       })
     )
   ]
