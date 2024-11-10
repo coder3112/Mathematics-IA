@@ -4,6 +4,7 @@
 #import "matrices.typ": *
 #import "split_cases.typ": *
 #import "affine.typ": *
+#import "non_affine.typ": *
 #import "appendix.typ": *
 
 #show: template.with(
@@ -28,5 +29,7 @@
 #split_cases
 #pagebreak(weak: true)
 #affine
+#pagebreak(weak: true)
+#non_affine
 #pagebreak(weak: true)
 #appendix_code

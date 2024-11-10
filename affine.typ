@@ -252,4 +252,7 @@
   $
   We can also confirm this with matrix multiplication on the computer:
   #figure(caption: "Scaled matrix confirmation", image("scale_matrix.png", height: 34%))
+
+  == Combination of Affine Transforms
+  TODO
 ]
