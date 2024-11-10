@@ -22,4 +22,13 @@
     numbers: true,
     caption: "Code: squeeze_matrix.m",
   )[#raw(squeeze_code, lang: "matlab")]
+
+  == Scale Matrices
+  #v(8pt)
+  #let scale_code = read("scale_matrix.m")
+  #code( 
+    stepnumber:1,
+    numbers: true,
+    caption: "Code: scale_matrix.m",
+  )[#raw(scale_code, lang: "matlab")]
 ]

@@ -190,7 +190,7 @@
   $
   Indeed, we can confirm this by simple matrix multiplication. This was done on a computer, and the result is shown below:
   #figure(
-    caption: "Squeeze matrix confirmation", image("squeeze_matrix.png", height: 40%)
+    caption: "Squeeze matrix confirmation", image("squeeze_matrix.png", height: 34%)
   )
 
   == Scaling
@@ -236,8 +236,20 @@
     )<scale_output>
   ]
   In @scale_output, we scale the quadrilateral by a factor of 2. This means both the length and width are 2 times the original in the final quadrilateral.
+  The coordinates are as follows:
+  $
+  A = (1,1) #h(20pt) & A' = (2,2)\
+  B = (3,1) #h(20pt) & B' = (6,2)\
+  C = (3,0) #h(20pt) & C' = (6,0)\
+  D = (1,0) #h(20pt) & D' = (2, 0)\
+  $
   So, our matrix for transformation is:
   $
-  
+  T = mat(
+    2,0;
+    0,2;
+  )
   $
+  We can also confirm this with matrix multiplication on the computer:
+  #figure(caption: "Scaled matrix confirmation", image("scale_matrix.png", height: 34%))
 ]
