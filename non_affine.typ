@@ -41,7 +41,9 @@
   == Projective Transforms
   Indeed, we must find an alternative system of matrices which lets us change which lines are parallel.
   
-  As an example, consider the use of Field Of View(FOV) in games or cameras, where we can imagine a mapping of an entire plane to another plane. This can be visualised as below:
+  As an example, consider the use of Field Of View(FOV) in games or cameras, where we can imagine a mapping of an entire plane to another plane.
+  
+  Furthermore, the desired transformation can be described as a change in perspective. One can imagine looking at the arbitrary quadrilateral from another point to observe a rectangle. Hence, such a mapping between planes could be thought of as simply passing through a point. In fact, this is the mathematical representation of any pinhole-like camera. This can be visualised as below:
   #figure(
     cetz.canvas(length: 3cm, {
     import cetz.draw: *
@@ -71,6 +73,4 @@
   }),
     caption: "Projective Transforms"
   )<projective_transform>
-  
-  Furthermore, the desired transformation can be described as a change in perspective. One can imagine looking at the arbitrary quadrilateral from another point to observe a rectangle. Hence, such a mapping between planes could be thought of as simply passing through a point. In fact, this is the mathematical representation of any pinhole-like camera. 
 ]
