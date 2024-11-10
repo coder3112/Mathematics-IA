@@ -2,10 +2,10 @@
 #let appendix_code = [
   #set heading(numbering: none)
   = Appendix A: Code Used
+  #show link: underline
   Inspired by #link("https://articulatedrobotics.xyz/tutorials/coordinate-transforms/rotation-matrices-2d/")
   == Rotation Matrices
   #v(8pt)
-  #show link: underline
   #let rot_code = read("rot_matrix.m")
   #show raw: it => text(it, font: "IBM Plex Mono")
   #set raw(theme: "sublime.tmTheme")
