@@ -99,7 +99,7 @@
   )
   mat(x;y;1)
   $
-  Actually, however. We can simplify this slightly. $1$ can simply be assumed to be 1 in this case. We are looking for a transformation that changes perspective, i.e. a perspective transform. This is sufficient simply by having that coefficient be 1. (When it is a non-unitary value, it acts to translate bodies but that is obviously not needed here) *citation needed* So,
+  However, we can actually simplify this slightly. $1$ can simply be assumed to be 1 in this case. We are looking for a transformation that changes perspective, i.e. a perspective transform. This is sufficient simply by having that coefficient be 1. (When it is a non-unitary value, it acts to translate bodies but that is obviously not needed here) *citation needed* So,
   $
   mat(X W; Y W; W;)
   =
