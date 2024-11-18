@@ -254,5 +254,8 @@
   #figure(caption: "Scaled matrix confirmation", image("scale_matrix.png", height: 34%))
 
   == Combination of Affine Transforms
-  TODO
+  Finally, one can combine the above transformations through matrix multiplication in order to obtain a more complex affine transform. For instance, if a shape were to be transformed such that it was was scaled by a factor of 2 and rotated by 45 degrees, we would simply use the transformation matrix:
+  $
+  T = mat(0.707, -0.707; 0.707, 0.707) mat(2,0;0,2) = mat(1.414,-1.414;1.414,-1.414)
+  $
 ]
