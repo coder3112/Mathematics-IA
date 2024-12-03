@@ -29,7 +29,7 @@
   + We can represent cases at "infinity", which means our solution would be completely generalisable.
   + They can often be optimised better on computers
 
-  === Converting cartesian coordinates to homogeneous coordinates <convert_cart_homo>
+  === Converting Cartesian coordinates to homogeneous coordinates <convert_cart_homo>
   The generally accepted conversion norm is to set $W=1$ when converting, since the coordinate really remains the same relative to the plane regardless.
 
   #example[
@@ -88,7 +88,7 @@
   $
   ])<transform_basiceq>
 
-  Now, we are going to first convert the cartesian coordinates $(X, Y)$ and $(x, y)$ from @plane_ray_fig into homogeneous coordinates to take advantage of the features they provide. Since the scaling of a point does not matter in homogeneous coordinates(all of them being the same anyway), we can actually write with arbitrary $W in RR$ (Note that we implicitly convert $(x,y)$ to homogeneous coordinates as discussed in @convert_cart_homo :
+  Now, we are going to first convert the Cartesian coordinates $(X, Y)$ and $(x, y)$ from @plane_ray_fig into homogeneous coordinates to take advantage of the features they provide. Since the scaling of a point does not matter in homogeneous coordinates(all of them being the same anyway), we can actually write with arbitrary $W in RR$ (Note that we implicitly convert $(x,y)$ to homogeneous coordinates as discussed in @convert_cart_homo :
   $
   mat(X W; Y W; W;)
   =
@@ -192,7 +192,7 @@
   arrow.double &A^T A H' = A'T B \
   arrow.double &H' = (A^T A)^(-1) A^T B
   $
-  We know A and B. The $X^(-1)$ means the inverse of a matrix $X$, and can be calculated using a computer. However, not all matrices are inversible, and this method would also not be the most accurate due to some approximations having to be made.\ 
+  We know A and B. The $X^(-1)$ means the inverse of a matrix $X$, and can be calculated using a computer. However, not all matrices are invertible, and this method would also not be the most accurate due to some approximations having to be made.\ 
   #line(stroke: rgb(0,0,0).lighten(60%), length: 100%)
    Therefore, we can instead use Singular Value Decomposition as 
   described in @svd. 
