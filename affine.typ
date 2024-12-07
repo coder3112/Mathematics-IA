@@ -11,7 +11,8 @@
     cos theta, -sin theta;
     sin theta, cos theta
   )
-  $  
+  $
+  See Appendix for proof.
   #figure(
   grid(
     columns: (1fr, 1fr),

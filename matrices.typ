@@ -76,7 +76,7 @@ A B = mat(
 )
 $
 #set math.mat(column-gap: 0% + 0.5em)
-That is, $ A B_(i j) = sum_(k=1)^(n) a_(i k) b_(k j)$
+That is, $ A B_(i j) = sum_(k=1)^(n) a_(i k) b_(k j)$. Note that the matrix $A B$ has dimensions $m times p$.
 
 == Transformation Matrices
 A matrix represents a transformation of points to allow for stretching, squeezing, translation and rotation etc. which change the coordinates of a set of points while preserving a set of properties.
@@ -118,5 +118,5 @@ $ A = U Sigma V^T $, where
 + $V$ contains the right singular vectors of $A$ in descending order. In the SVD, we consider the transpose of this matrix.
 + $Sigma$ is a matrix of the same dimensions as $A$. The numbers on the diagonal are the singular values of $A$, arranged in descending order. All other values are 0. 
 
-This is a very complex operation, and only a short summary is provided above. Indeed, if we use this method, we will use a computer to do the numerical computation for us.
+This is a very complex operation, and only a short summary is provided above. Indeed, this method requires a computer for numerical computation
 ]
