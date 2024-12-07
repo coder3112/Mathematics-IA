@@ -33,10 +33,10 @@ A transpose operation on a matrix acts to switch the columns and rows of a matri
 
 == Symmetric Matrix
 A matrix which has the same values across a diagonal line. In other words, $ A = A^T $ for any symmetric matrix $A$.
-Such a matrix has eigenvectors which are perpendicular to each other.
+Such a matrix has eigenvectors (see @eigen for details) which are perpendicular to each other.
 #example[
   $
-  mat(1,3;3,2)^T = mat(1,3;3,2)
+  mat(1,3,5;3,2,9;5,9,0;)^T = mat(1,3,5;3,2,9;5,9,0;)
   $
 ]
 
@@ -83,7 +83,7 @@ A matrix represents a transformation of points to allow for stretching, squeezin
 
 For a transformation $T$ on a point $x$, represented in column-vector form, it can be written as $T(x) = A x$ where $A$ is the transformation matrix of T.
 
-== Eigenvectors and Eigenvalues
+== Eigenvectors and Eigenvalues <eigen>
 An _eigenvector_ of a matrix is a vector whose direction remains unchanged when the matrix is used to transform it. That means, the vector is only scaled by a constant factor. More precisely, if $T$ is the transformation matrix, $v$ is the vector and $lambda$ is the constant scaling vector:
 $ T v = v lambda $
 The _eigenvalue_ is the corresponding scale factor, $lambda$.

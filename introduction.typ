@@ -2,7 +2,7 @@
 
 #let introduction = [
 = Introduction
-We consider the challenge of capturing perfectly rectangular objects, such as a book page, when photographed from an angle or non-standard perspective. The resulting image often needs to be cropped and distorted to restore its conventional rectangular appearance. Image editing software addresses this issue by allowing users to select four points that define a quadrilateral, which can then be transformed into a rectangle with the correct dimensions.
+Consider the challenge of capturing perfectly rectangular objects, such as a book page, when photographed from an angle or non-standard perspective. The resulting image often needs to be cropped and distorted to restore its conventional rectangular appearance. Image editing software addresses this issue by allowing users to select four points that define a quadrilateral, which can then be transformed into a rectangle with the correct dimensions.
 #figure(
   grid(
       columns: 2,
@@ -23,14 +23,14 @@ The aim of this investigation is to explore the mathematics behind this transfor
 #align(center)[
   #figure(
     box(inset: 2pt, outset: 2pt, radius: 1pt, stroke: 1pt)[
-      *How does one generate a transformation between an arbitrary convex quadrilateral and an arbitrary rectangle*
+      *What is the transformation between an arbitary convex quadrilateral and an arbitrary rectangle?*
     ]
   )<researchquestion>
 ]
 
 = Formulating the Problem
 #columns(2, gutter: 40pt)[
-== Given
+== Given Information
 #underline[Initial Quadrilateral]:
 
 $A B C D$ with vertices at $A(x_A, y_A)$, $B(x_B, y_B)$, $C(x_C, y_C)$, $D(x_D, y_D)$
@@ -97,7 +97,7 @@ grid(
 caption: "Transformation of " + $A B C D$ + " to " + $A'B'C'D'$
 )<desired_output>
 ]
-== To Find
+== Desired Result
 #v(12pt)
 #align(center)[
   #box(stroke: 1pt, inset: 2pt, outset: 2pt)[
