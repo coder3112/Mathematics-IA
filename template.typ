@@ -1,4 +1,4 @@
-#import "@preview/ctheorems:1.1.0": *
+#import "@preview/ctheorems:1.1.3": *
 #import "@preview/wordometer:0.1.3": *
 
 #let template(
@@ -61,7 +61,7 @@
   set text(font: font-face, size: 12pt)
   // Configure equation numbering and spacing.
   set math.equation(numbering: none)
-  show math.equation: set block(spacing: 1em)
+  show math.equation: set block(spacing: 1em, breakable: true)
   show math.equation: set text(style: "normal", size: 12pt, weight: "regular", font: "New Computer Modern Math")
   
   set heading(numbering: heading_numbering)

@@ -15,4 +15,5 @@ plot(0,0,'+k', 'DisplayName', 'Origin');
 hold on; grid on;
 plot(points(1,:), points(2,:), 'x-k', 'DisplayName', 'Original Points');
 plot(coord_pts(1,:), coord_pts(2,:), 'x-b', 'DisplayName', 'Squeezed Points through calculated matrix');
+legend('Origin','Original Points', 'Squeezed Points through calculated matrix', 'FontSize', 16);
 legend show; axis equal;

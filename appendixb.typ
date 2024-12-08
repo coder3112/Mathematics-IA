@@ -2,8 +2,8 @@
 
 #let appendix_b = [
   #set heading(numbering: none)
-  = Proofs
-  == Rotation Matrix
+  = Proofs <proofs>
+  == Rotation Matrix <rotmatrixproof>
   #theorem[
     The Rotation Matrix is $ mat(cos theta, -sin theta; sin theta, cos theta) $
     #proof[

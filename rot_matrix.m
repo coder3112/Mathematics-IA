@@ -7,7 +7,7 @@ points = [x_points; y_points];
 theta = 45;
 rot_mat = [cosd(theta), -sind(theta);
            sind(theta),  cosd(theta)];
-coord_mat=[0.751,-0.747;0.747,0.751]
+coord_mat=[0.690,-0.674;0.674,0.690]
 
 % Rotate the points
 for p = 1:size(points,2)

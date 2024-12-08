@@ -12,7 +12,7 @@
     sin theta, cos theta
   )
   $
-  See Appendix for proof.
+  See Appendix B for proof.
   #figure(
   grid(
     columns: (1fr, 1fr),
@@ -87,25 +87,23 @@
   
   Of course, we can note here that finding the rotation matrix for a single edge should be enough: all edges must have been rotated by the same angle, and therefore, the same matrix will apply to all of them #footnote("One can note that this is a consequence of a rotation being an affine transformation."). This is also the primary benefit of matrices as tools to find transformations: they can be applied on the plane uniformly.
 
-  $ A D = mat(x_D - x_A; y_D - y_A)\ A'D'= mat(x_(D') - x_(A'); y_(D') - y_(A')) $ Taking the above to be initial and final vectors, then we can treat this as a transformation of the former to the latter. Our choice to use $A D$ is arbitrary $dash$ as discussed above any one edge will work.
+  $ A D = mat(x_D - x_A; y_D - y_A)\ A'D'= mat(x_(D') - x_(A'); y_(D') - y_(A')) $ Taking the above to be initial and final vectors, then we can treat this as a transformation of the former to the latter. Our choice to use $A D$ is arbitrary $dash$ as discussed above any one edge will work. 
   
-  $ cos theta &= A dot B \ &= (x_D - x_A)(x_(D') - x_(A')) + (y_D - y_A)(y_(D') - y_(A')) $
-  $ sin theta &= norm(A times B) \ &= (x_D - x_A)(y_(D') - y_(A')) - (x_(D') - x_(A'))(y_D - y_A) $
-  where $norm(.)$ represents the modulus/norm for the vector.
-  Thus, we can rewrite the rotation matrix as:
+  To calculate $cos(theta)$:
   $
-  R &= mat(
-    A dot B, -norm(A times B);
-    norm(A times B), A dot B
-  ) \ &= mat(
-    (x_D - x_A)(x_(D') - x_(A')),#h(15pt), -\((x_D - x_A)(y_(D') - y_(A')) -;
-    + (y_D - y_A)(y_(D') - y_(A')),#h(15pt), (x_(D') - x_(A'))(y_D - y_A)\);
-    ;;
-    (x_D - x_A)(y_(D') - y_(A')) -, ,(x_D - x_A)(x_(D') - x_(A'));
-    (x_(D') - x_(A'))(y_D - y_A),, + (y_D - y_A)(y_(D') - y_(A'));
-  )
+  A D dot A'D' &= norm(A D)norm(A'D')cos(theta) \
+  cos(theta) &= frac(A D dot A'D',norm(A D)norm(A'D'))\
+  &= frac(A D dot A'D',norm(A D)^2) \
+  &= frac((x_D - x_A)(x_(D')-x_(A'))+(y_D - y_A)(y_(D')-y_(A')), (x_D - x_A)^2 + (y_D-y_A)^2)
   $
-
+  Now, to calculate $sin(theta)$
+  $
+  A D times A'D' &= norm(A D)norm(A'D')sin(theta) \
+  sin(theta) &= frac(A D times A'D',norm(A D)norm(A'D'))\
+  &= frac(A D times A'D',norm(A D)^2) \
+  &= frac((x_D - x_A)(y_(D') - y_(A'))-(y_D - y_A)(x_(D')-x_(A')), (x_D - x_A)^2 + (y_D-y_A)^2)
+  $
+  Now, we can simply substitute these values into the rotation matrix above to get our answer.
   To confirm that this works, we will use @rotated_output again. The coordinates for the vertices are as follows. 
   $
   A = mat(-1;1) & #h(20pt) A' = mat(-1.41;0) \
@@ -116,8 +114,8 @@
   This gives
   $
   R_#text("coordinates") = mat(
-    0.751, -0.747;
-    0.747,0.751
+    0.690, -0.674;
+    0.674,0.690;
   )
   $
   The correct matrix is
@@ -129,7 +127,7 @@
   $
   We can clearly see that the matrix we got from our formula is almost correct, and we can chalk up the minute differences to calculation error due to approximation.
   This can also be seen here:
-  #figure(caption: "Original Quadrilateral and its rotation through 2 different matrices", image("rotated_matrix.png", height: 34%))
+  #figure(caption: "Original Quadrilateral and its rotation through 2 different matrices", image("rotated_matrix.png", height: 64%))
 
   
   == Squeezing
@@ -190,8 +188,9 @@
   )
   $
   Indeed, we can confirm this by simple matrix multiplication. This was done on a computer, and the result is shown below:
+  #v(-13pt)
   #figure(
-    caption: "Squeeze matrix confirmation", image("squeeze_matrix.png", height: 34%)
+    caption: "Squeeze matrix confirmation", image("squeeze_matrix.png", width: 84%)
   )
 
   == Scaling
