@@ -1,5 +1,5 @@
 #import "@preview/cetz:0.3.0"
-#import "template.typ": example
+#import "template.typ": example, proof, theorem
 
 #let affine = [
   #set math.mat(delim: "[")
@@ -12,7 +12,29 @@
     sin theta, cos theta
   )
   $
-  See Appendix B for proof.
+  #proof[
+      Use polar co-ordinates with
+      $
+      x = R cos(phi) \
+      y = R sin(phi)
+      $
+      Then, after a rotation of angle $theta$,
+      $
+      x &= R cos (phi + theta) \
+       &= R cos(phi)cos(theta) - R sin(phi)sin(theta)\
+       &= x cos(theta) - y sin(theta)\ \
+      y &= R sin (phi + theta) \
+      &= R sin(phi)cos(theta) + R sin(phi)cos(theta)\
+       &= x sin(theta) + y cos(theta)\ \
+      $
+      This can be translated into the matrix:
+      $
+      mat(
+        cos theta, -sin theta;
+        sin theta, cos theta
+      )
+      $
+  ]
   #figure(
   grid(
     columns: (1fr, 1fr),
@@ -139,7 +161,11 @@
     0, 1/a;
   )
   $
-
+  #proof[
+      $
+      mat(a,0;0,1/a)mat(x;y) = mat(a x + 0y; 0 x + 1/a y) = mat(a x; y/a)
+      $ which is the desired output vector. (Scaled up and down in orthogonal directions by the same factor)
+  ]
   #example[
     #figure(
       cetz.canvas(length: 1.5cm, {
@@ -203,7 +229,11 @@
     0, a
   )
   $
-
+  #proof[
+      $
+      mat(a,0;0,a)mat(x;y) = mat(a x + 0y; 0 x + a y) = mat(a x; a y)
+      $ which is the desired output vector. (Scaled up in both directions by the same factor)
+  ]
   #example[
     #figure(
       cetz.canvas(length: 0.85cm, {
@@ -251,7 +281,7 @@
   )
   $
   We can also confirm this with matrix multiplication on the computer:
-  #figure(caption: "Scaled matrix confirmation", image("scale_matrix.png", height: 64%))
+  #figure(caption: "Scaled matrix confirmation", image("scale_matrix.png", height: 54%))
 
   == Combination of Affine Transforms
   Finally, one can combine the above transformations through matrix multiplication in order to obtain a more complex affine transform. For instance, if a shape were to be transformed such that it was was scaled by a factor of 2 and rotated by 45 degrees, we would simply use the transformation matrix:

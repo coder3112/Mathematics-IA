@@ -25,18 +25,15 @@
 )
 
 #introduction
-#pagebreak(weak: true)
 #matrices
 #split_cases
-#pagebreak(weak: true)
 #affine
-#pagebreak(weak: true)
 #non_affine
 #pagebreak(weak: true)
 #bibliography("main.bib")
 #pagebreak(weak: true)
 #appendix_code
-#pagebreak(weak: true)
-#appendix_b
+// #pagebreak(weak: true)
+// #appendix_b
 
 // https://web.archive.org/web/20100801071311/http://alumni.media.mit.edu/%7Ecwren/interpolator/

@@ -69,7 +69,7 @@
     content((0.1,-0.9), "Plane 2", anchor: "east")
     content((0.3, 0.25), $p_1$, anchor: "south")
     content((0.44, -0.6), $T$, ancor: "west")
-    content((0.37, -1.04), $p_2$, anchor: "south")
+    content((0.37, -1.14), $p_2$, anchor: "south")
   }),
     caption: "Projective Transforms"
   )<projective_transform>

@@ -3,7 +3,7 @@
 #let matrices = [
 #set math.mat(delim: "[")
 = Matrices
-A matrix(pl: matrices) is a 2-D Array, described by the notation $m times n$ where $m$ is the number of rows and columns. For example, this is a 2 x 2 matrix:
+A matrix(plural: matrices) is a 2-D Array, described by the notation $m times n$ where $m$ is the number of rows and columns. For example, this is a 2 x 2 matrix:
 $
 mat(
   1, 10;
