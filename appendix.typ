@@ -3,8 +3,9 @@
   #set heading(numbering: none)
   = Appendix A: Code Used
   #show link: underline
-  Inspired by #link("https://articulatedrobotics.xyz/tutorials/coordinate-transforms/rotation-matrices-2d/")
+  Inspired by *cite actual* #link("https://articulatedrobotics.xyz/tutorials/coordinate-transforms/rotation-matrices-2d/")
   == Rotation Matrices
+  For @rotmatfig
   #v(8pt)
   #let rot_code = read("rot_matrix.m")
   #show raw: it => text(it, font: "IBM Plex Mono")
@@ -16,6 +17,7 @@
   )[#raw(rot_code, lang: "matlab")]
 
   == Squeeze Matrices
+  For @squeeze_output_mat
   #v(8pt)
   #let squeeze_code = read("squeeze_matrix.m")
   #code( 
@@ -25,6 +27,7 @@
   )[#raw(squeeze_code, lang: "matlab")]
 
   == Scale Matrices
+  For @scale_output_mat
   #v(8pt)
   #let scale_code = read("scale_matrix.m")
   #code( 
@@ -34,7 +37,9 @@
   )[#raw(scale_code, lang: "matlab")]
 
   == Homography
-  Code inspired by #link("https://web.archive.org/web/20100801071311/http://alumni.media.mit.edu/%7Ecwren/interpolator/")
+  For @finfinalfinal
+  
+  Code inspired by *cite proper*#link("https://web.archive.org/web/20100801071311/http://alumni.media.mit.edu/%7Ecwren/interpolator/")
   #v(8pt)
   #let inv_code = read("inv.m")
   #code( 

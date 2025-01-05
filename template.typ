@@ -55,9 +55,9 @@
   set par(justify: true)
   show: thmrules
   show par: set block(spacing: 1em)
-  /// Need to comment for now, because it is very annoying to have double spaced documents when working
-  // set text(top-edge: 0.7em, bottom-edge: -0.3em) // Double spacing
-  // set par(leading: 1em) // Needed for double spacing
+  // Need to comment for now, because it is very annoying to have double spaced documents when working
+  set text(top-edge: 0.7em, bottom-edge: -0.3em) // Double spacing
+  set par(leading: 1em) // Needed for double spacing
   set text(font: font-face, size: 12pt)
   // Configure equation numbering and spacing.
   set math.equation(numbering: none)

@@ -29,7 +29,7 @@ The aim of this investigation is to explore the mathematics behind this transfor
 ]
 
 = Formulating the Problem
-#columns(2, gutter: 40pt)[
+#columns(1, gutter: 40pt)[
 == Given Information
 #underline[Initial Quadrilateral]:
 
@@ -39,8 +39,8 @@ $A B C D$ with vertices at $A(x_A, y_A)$, $B(x_B, y_B)$, $C(x_C, y_C)$, $D(x_D, 
 
 $A'B'C'D'$ with vertices at $A'(x_A', y_A')$, $B'(x_B', y_B')$, $C'(x_C', y_C')$, $D'(x_D', y_D')$
 
+
 #colbreak()
-#v(20pt)
 
 #figure(
 grid(

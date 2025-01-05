@@ -38,7 +38,7 @@
     $
   ] where LHS is cartesian and RHS is homogeneous coordinates.
 
-  == Projective Transforms
+  == Projective Transforms <projetransform>
   Indeed, we must find an alternative system of matrices which lets us change which lines are parallel.
   
   As an example, consider the use of Field Of View(FOV) in games or cameras, where we can imagine a mapping of an entire plane to another plane.
@@ -95,11 +95,11 @@
   mat(
     h_11, h_12, h_13;
     h_21, h_22, h_23;
-    h_31, h_32, 1;
+    h_31, h_32, h_33;
   )
   mat(x;y;1)
   $
-  However, we can actually simplify this slightly. $1$ can simply be assumed to be 1 in this case. We are looking for a transformation that changes perspective, i.e. a perspective transform. This is sufficient simply by having that coefficient be 1. (When it is a non-unitary value, it acts to translate bodies but that is obviously not needed here) *citation needed* So,
+  However, we can actually simplify this slightly. We are looking for a transformation that changes perspective, i.e. a perspective transform. This is sufficient simply by having the coefficient $h_33$ be 1. (When it is a non-unitary value, it acts to translate bodies but that is obviously not needed here) *citation needed* So,
   $
   mat(X W; Y W; W;)
   =
@@ -112,8 +112,9 @@
   $
   Now, we can begin to simplify this matrix to obtain some answers.
   Using matrix multiplication, one has that:
-  $ W = g x + h y + 1. $
-  Also, by simply transposing terms in our equation to get (in other words, the $W$ is "factored out"  #footnote("This is not exactly precise, definition-wise. But, we are essentially re-writing the equation in a way such that the denominator acts as a way for us to get non-affine transformations,")):
+  $ W = h_31 x + h_32 + 1. $
+  Also, by simply transposing terms in our equation to get (in other words, the $W$ is "factored out"):
+  Dividing the left hand side by $W$ gives $mat(X;Y;1)$. Since we just calculated $W$ in vector form above, we can also substitute that into the division on the right hand side below:
   $
   mat(X;Y;1) = 
   #box[
@@ -186,7 +187,7 @@
   Now, if we solve this equation, we will find the matrix $H$, and we will have our solution.
 
   == Solving
-  The simplest way to solve this would be to use the so called pseudo-inverse:
+  The simplest way to solve this would be to solve like a regular algebraic equation.
   $
   &A H' = B \
   arrow.double &A^T A H' = A'T B \
@@ -196,76 +197,120 @@
   #line(stroke: rgb(0,0,0).lighten(60%), length: 100%)
    Therefore, we can instead use Singular Value Decomposition as 
   described in @svd. 
-  $ #text("SVD") P = U Sigma V^T $ The last singular vector of $V$ is the solution to $H$, and then we have the homography matrix to find any transformation.
+  $ #text("SVD") P = U Sigma V^T $ The last singular vector of $V$ is the solution to $H$, and then we have the homography matrix to find any transformation:
+  $
+  h = mat(
+      h_11, h_12, h_13;
+      h_21, h_22, h_23;
+      h_31, h_32, 1;
+    )
+  $
   SVD has 0 error for our described case *citation needed* and is thus the best option.
 
   == Example
-  Refer back to @desired_output reproduced below.
-  #figure(
-    grid(
-      columns: (1fr, 1fr),
-      gutter: 3pt,
-      cetz.canvas(length: 1.5cm, {
-      import cetz.draw: *
-    
-      set-style(
-        mark: (fill: black, scale: 2),
-        stroke: (thickness: 0.4pt, cap: "round"),
-        angle: (
-          radius: 0.3,
-          label-radius: .22,
-          fill: green.lighten(80%),
-          stroke: (paint: green.darken(50%))
-        ),
-        content: (padding: 1pt)
-      )
-      line((-1, 1), (0.3, 1))
-      content((-1.1,1), $ A $, anchor: "east")
-      content((0.4,1), $ B $, anchor: "west")
-      line((0.3, 1), (0.9, -0.3))
-      content((0.9,-0.4), $ C $, anchor: "north")
-      line((0.9, -0.3), (-1.5, 0.1))
-      content((-1.5, 0), $ D $, anchor: "north")
-      line((-1,1), (-1.5, 0.08))
-      line((2.2,0.5), (3.3,0.5), mark: (end: "stealth"))
-      content((2.7,0.76), $T$, anchor: "south")
-    }),
-      cetz.canvas(length: 1.5cm, {
-      import cetz.draw: *
-      set-style(
-        stroke: (thickness: 0.7pt, cap: "round"),
-      )
-      set-style(
-        mark: (fill: black, scale: 2),
-        stroke: (thickness: 0.4pt, cap: "round"),
-        angle: (
-          radius: 0.3,
-          label-radius: .22,
-          fill: green.lighten(80%),
-          stroke: (paint: green.darken(50%))
-        ),
-        content: (padding: 1pt)
-      )
-      rect((-1,1), (0.2,-0.3))
-      content((-1,1), "A'", anchor: "east")
-      content((0.2,1), "B'", anchor: "west")
-      content((-1,-0.3), "D'", anchor: "east")
-      content((0.2,-0.3), "C'", anchor: "west")
-    }),
-    ),
-    )
-  Then, we are able to generate a mapping between the two. To confirm that this works, sets of points were created inside the original quadrilateral and mapped to the final rectangle using the same homography matrix that was calculated as the mapping. The result is as follows:
+  Then, we are able to generate a mapping between two quadrilaterals. To confirm that this works, sets of points were created inside the original quadrilateral and mapped to the final rectangle using the same homography matrix that was calculated as the mapping. 
+
+  The process started with the word "Hi" inscribed inside a trapezium, and specified an output rectangle to which we needed to construct the transformation matrix. Then, the above method was used, specifically using the vertices of the trapezium as the initial coordinates and the rectangle's coordinates as the final ones. This gave a homography matrix, which is now applied to the word "Hi" by using each point's coordinates and multiplying them by the homography (transformation) matrix to obtain the coordinates for the word in the rectangle. (The original points are red, and the final points are blue.)
+
+  
+  The result is as follows:
   #figure(
     grid(
       columns: 2,
       figure(
-        image("final.png")
+        image("final.png", height: 35%)
       ),
       figure(
-        image("final2.png")
+        image("final2.png", height: 35%)
       ),
     ),
     caption: "Homography matrix calculated using Inverse and SVD respectively"
+  )<finfinalfinal>
+
+  
+  We can see that the final rectangle we obtain is rotated $90 degree$ clockwise, but this is easily fixable as we saw in @rot. This probably happened because the points $A, B, C, D$ were not assigned in order in the code, and is easily fixed. We see here that the difference between the inverse and SVD methods are negligible, but they can play a role in other cases. Therefore, SVD is recommended, as shown in the example above.
+
+  Refer back to @desired_output reproduced below.
+
+  = Conclusion
+  Looking at our example above, we can see that we have found a method for finding $T$, and have thus answered the research question. 
+  
+  #figure(
+  grid(
+    columns: (1fr, 1fr),
+    gutter: 3pt,
+    cetz.canvas(length: 1.5cm, {
+    import cetz.draw: *
+  
+    set-style(
+      mark: (fill: black, scale: 2),
+      stroke: (thickness: 0.4pt, cap: "round"),
+      angle: (
+        radius: 0.3,
+        label-radius: .22,
+        fill: green.lighten(80%),
+        stroke: (paint: green.darken(50%))
+      ),
+      content: (padding: 1pt)
+    )
+    line((-1, 1), (0.3, 1))
+    content((-1.1,1), $ A $, anchor: "east")
+    content((0.4,1), $ B $, anchor: "west")
+    line((0.3, 1), (0.9, -0.3))
+    content((0.9,-0.4), $ C $, anchor: "north")
+    line((0.9, -0.3), (-1.5, 0.1))
+    content((-1.5, 0), $ D $, anchor: "north")
+    line((-1,1), (-1.5, 0.08))
+    line((2.2,0.5), (3.3,0.5), mark: (end: "stealth"))
+    content((2.7,0.76), $T$, anchor: "south")
+  }),
+    cetz.canvas(length: 1.5cm, {
+    import cetz.draw: *
+    set-style(
+      stroke: (thickness: 0.7pt, cap: "round"),
+    )
+    set-style(
+      mark: (fill: black, scale: 2),
+      stroke: (thickness: 0.4pt, cap: "round"),
+      angle: (
+        radius: 0.3,
+        label-radius: .22,
+        fill: green.lighten(80%),
+        stroke: (paint: green.darken(50%))
+      ),
+      content: (padding: 1pt)
+    )
+    rect((-1,1), (0.2,-0.3))
+    content((-1,1), "A'", anchor: "east")
+    content((0.2,1), "B'", anchor: "west")
+    content((-1,-0.3), "D'", anchor: "east")
+    content((0.2,-0.3), "C'", anchor: "west")
+  }),
+  ),
   )
-  We can see that the final rectangle we obtain is rotated $90 degree$ clockwise, but this is easily fixable as we saw in @rot. This probably happened because the points $A, B, C, D$ were not assigned in order in the code, and is easily fixed. We see here that the difference between the inverse and SVD methods are negligible, but they can play a role in other cases. Therefore, SVD is recommended. 
+  Given the coordinates for
+  - $A B C D$ with vertices at $A(x_A, y_A)$, $B(x_B, y_B)$, $C(x_C, y_C)$, $D(x_D, y_D)$
+  - $A'B'C'D'$ with vertices at $A'(x_A', y_A')$, $B'(x_B', y_B')$, $C'(x_C', y_C')$, $D'(x_D', y_D')$
+  Then,
+  $
+  mat(
+    x_A,y_A,1,0,0,0,-x_(A') x_A,-x_(A') y_A;; 0,0,0,x_A,y_A,1,-Y_A x_A, -Y_A y_A;;
+    x_B,y_B,1,0,0,0,-x_(B') x_B,-x_(B') y_B;; 0,0,0,x_B,y_B,1,-y_(B') x_B, -y_(B') y_B;;
+    x_C,y_C,1,0,0,0,-x_(C') x_C,-x_(C') y_C;; 0,0,0,x_C,y_C,1,-y_(C') x_C, -y_(C') y_C;;
+    x_D,y_D,1,0,0,0,-x_(D') x_D,-x_(D') y_D;; 0,0,0,x_D,y_D,1,-y_(D') x_D, -y_(D') y_D;
+  )
+  
+  mat(h_11;;h_12;;h_13;;h_21;;h_22;;h_23;;h_31;;h_32;;1)
+  =
+  mat(x_(A');;Y_A;;x_(B');; y_(B');; x_(C');; y_(C');; x_(D');; y_(D');)
+  $ as shown in @projetransform. This can be solved using either of the techniques described above: using SVD or through Matrix Inverse. 
+
+  Finally, the matrix to transform is:
+  $
+  T = mat(
+      h_11, h_12, h_13;
+      h_21, h_22, h_23;
+      h_31, h_32, 1;
+    )
+  $
 ]

@@ -149,7 +149,7 @@
   $
   We can clearly see that the matrix we got from our formula is almost correct, and we can chalk up the minute differences to calculation error due to approximation.
   This can also be seen here:
-  #figure(caption: "Original Quadrilateral and its rotation through 2 different matrices", image("rotated_matrix.png", height: 64%))
+  #figure(caption: "Original Quadrilateral and its rotation through 2 different matrices", image("rotated_matrix.png", height: 56%))<rotmatfig>
 
   
   == Squeezing
@@ -217,7 +217,7 @@
   #v(-13pt)
   #figure(
     caption: "Squeeze matrix confirmation", image("squeeze_matrix.png", width: 84%)
-  )
+  )<squeeze_output_mat>
 
   == Scaling
   This transformation enlarges or shrinks the distances by a constant factor in both directions.
@@ -281,7 +281,7 @@
   )
   $
   We can also confirm this with matrix multiplication on the computer:
-  #figure(caption: "Scaled matrix confirmation", image("scale_matrix.png", height: 54%))
+  #figure(caption: "Scaled matrix confirmation", image("scale_matrix.png", height: 42%))<scale_output_mat>
 
   == Combination of Affine Transforms
   Finally, one can combine the above transformations through matrix multiplication in order to obtain a more complex affine transform. For instance, if a shape were to be transformed such that it was was scaled by a factor of 2 and rotated by 45 degrees, we would simply use the transformation matrix:
