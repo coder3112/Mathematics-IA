@@ -288,4 +288,9 @@
   $
   T = mat(0.707, -0.707; 0.707, 0.707) mat(2,0;0,2) = mat(1.414,-1.414;1.414,-1.414)
   $
+
+  == Evaluation   
+  At this point, some specific cases have been solved. For instance, it is trivial to crop a rectangle into a square; this is just a squeeze matrix. Similarly if the only intention is to zoom into a shot, one can use the scaling matrices. Thereforem this endeavour is still quite useful. Another positive is that these matrices are extremely simple to compute.
+
+  However, no matter how many shears or squeezes are performed by such a combination, it is impossible to convert between two completely distinct shapes such as a trapezium and rectangle through only affine transformations. This method has an intrinsic flaw in that it must always preserve parallel lines. Instead, alternative matrices that do not have this property must be found. Our research question thus remains unanswered for any pair of quadrilaterals.
 ]

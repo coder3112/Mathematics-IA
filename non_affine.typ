@@ -4,10 +4,10 @@
 
 #let non_affine = [
   = Non Affine Transformations
-  We have seen above that affine transformations can help with rotation, scaling etc. but is not helpful in actually converting "shapes". This means, that a trapezium cannot be converted into a rectangle and so on. This is because these shapes have a different set of lines which are parallel $dash$ their axes must be transformed/warped. 
+  We have seen above that affine transformations can help with rotation, scaling etc. but is not helpful in actually converting "shapes". This means, that a trapezium cannot be converted into a rectangle and so on. This is because these shapes have a different set of lines which are parallel $dash$ their axes must be transformed/warped. Non-Affine transformations are the the category of transformations which specifically deal with this issue and will be discussed now.
 
-  For this, a projective transform is necessary. However, before that can be described, one must discuss homogeneous coordinate systems.
-
+  However, before that, another problem must be addressed: the chosen coordinate system. In Cartesian Coordinates,  operations such as a change of perspective or translation are represented by matrix _addition_. However, since transformations such as rotation and squeezing happen by matrix _multiplication_, the former and latter cannot be combined into a single matrix. To solve this problem, Homogeneous Coordinates are also introduced.
+  
   == Homogeneous Coordinates
   Homogeneous or Projective Coordinates are coordinates that:
   + If they are multiplied by a (non-zero) _scalar_, then the resulting coordinates represent the same point.
@@ -17,17 +17,19 @@
     //http://www.songho.ca/math/homogeneous/homogeneous.html
     caption: [Each of the points on the orange line are equivalent in homogeneous coordinates. Source: songho],
     image("homogeneous_coordinates_example.png", width: 40%),
-  )
+  )<illustrationhomo>
   
   Imagine projecting a 2D image onto a screen. Then, there are obviously X and Y dimensions of the image. However, there is also a coordinate W, i.e. the distance of the projector from the screen. If it increases, the image gets bigger, and if it decreases, the image gets smaller. 
   
   The (X, Y) coordinates are Cartesian, and adding W into the mix allows us to discuss projective geometry. Hence, in this case we would have (X, Y, W) and these are the homogeneous coordinates. This will help us solve the problem of uniformly representing a transformation. 
   
-  This is better than 3D coordinates for the following causes:
+  This is better than cartesian coordinates for the following causes:
   + Two different planes always intersect at a point
   + A line and a plane (almost) always intersect at a point
-  + We can represent cases at "infinity", which means our solution would be completely generalisable.
-  + They can often be optimised better on computers
+  The above two facts are used to ensure that one can change perspective using matrices. Indeed, later, when @projective_transform is considered, it is assumed that the two planes intersect at only one point, and the transformation rays indicated in the figure only pass through once. 
+  Furthermore,
+  + It can represent cases at "infinity", which means the solution would be completely generalisable for any sort of scaling or distances without having to account for it additionally.
+  + They can often be optimised better on computers, which while not a direct requirement, is beneficial, since the original research question arose out of curiosity for how image transformations happen on technology.
 
   === Converting Cartesian coordinates to homogeneous coordinates <convert_cart_homo>
   The generally accepted conversion norm is to set $W=1$ when converting, since the coordinate really remains the same relative to the plane regardless.
@@ -88,7 +90,7 @@
   $
   ])<transform_basiceq>
 
-  Now, we are going to first convert the Cartesian coordinates $(X, Y)$ and $(x, y)$ from @plane_ray_fig into homogeneous coordinates to take advantage of the features they provide. Since the scaling of a point does not matter in homogeneous coordinates(all of them being the same anyway), we can actually write with arbitrary $W in RR$ (Note that we implicitly convert $(x,y)$ to homogeneous coordinates as discussed in @convert_cart_homo :
+  Now, we are going to first convert the Cartesian coordinates $(X, Y)$ and $(x, y)$ from @plane_ray_fig into homogeneous coordinates to take advantage of the features they provide. Since the scaling of a point does not matter in homogeneous coordinates(all of them indicate to the same point as seen in @illustrationhomo), we can actually write with arbitrary $W in RR$ (Note that we implicitly convert $(x,y)$ to homogeneous coordinates as discussed in @convert_cart_homo :
   $
   mat(X W; Y W; W;)
   =
@@ -99,7 +101,7 @@
   )
   mat(x;y;1)
   $
-  However, we can actually simplify this slightly. We are looking for a transformation that changes perspective, i.e. a perspective transform. This is sufficient simply by having the coefficient $h_33$ be 1. (When it is a non-unitary value, it acts to translate bodies but that is obviously not needed here) *citation needed* So,
+  However, we can actually simplify this slightly. We are looking for a transformation that changes perspective, i.e. a perspective transform. This is sufficient simply by having the coefficient $h_33$ be 1. (When it is a non-unitary value, it acts to translate bodies but that is obviously not needed here). So,
   $
   mat(X W; Y W; W;)
   =
@@ -205,7 +207,7 @@
       h_31, h_32, 1;
     )
   $
-  SVD has 0 error for our described case *citation needed* and is thus the best option.
+  SVD has 0 error for the described case, which makes it perfect and is thus the best option.
 
   == Example
   Then, we are able to generate a mapping between two quadrilaterals. To confirm that this works, sets of points were created inside the original quadrilateral and mapped to the final rectangle using the same homography matrix that was calculated as the mapping. 

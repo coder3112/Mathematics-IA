@@ -115,7 +115,7 @@
   }
   v(-10pt)
   // table of contents
-  text(outline(depth: 3, indent: 2em, title: "Table of Contents"))
+  text(outline(depth: 1, indent: 2em, title: "Table of Contents"))
   set par(linebreaks: "optimized")
   // Display the paper's contents.
   pagebreak()
