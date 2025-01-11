@@ -234,10 +234,22 @@
   
   We can see that the final rectangle we obtain is rotated $90 degree$ clockwise, but this is easily fixable as we saw in @rot. This probably happened because the points $A, B, C, D$ were not assigned in order in the code, and is easily fixed. We see here that the difference between the inverse and SVD methods are negligible, but they can play a role in other cases. Therefore, SVD is recommended, as shown in the example above.
 
-  Refer back to @desired_output reproduced below.
+  
+  = The Process and Introspection thereof
+  My first instinct for designing a solution to the research question was to follow a algorithmic procedure I designed myself. I would take one edge and then transform that edge into the desired coordinates, iteratively using the new coordinates to design transformations. However, I quickly realised that this was impossible to implement generally, since each shape is different and we only ended up with a mathematical representation virtually equivalent to being given the old and new coordinates -- information we already had. Furthermore, there as no way to actually use this method to crop images -- it would only work for a given quadrilateral, which while technically a solution to the research question, was unsatisfying on account of it not being a remedy to the original problem of image-editing and game-rendering that this exploration was inspired by. This is where I realised that to improve on the shortcoming of the first method, I needed:
+  + A way to uniformly represent our coordinates such that the transformation remains the same for all points on the plane.
+  + A transformation that remains constant for all points
+  + A transformation of one point that does not depend on another point's position
+  To achieve all of this, I decided matrices were the best option. The graphing of functions and their transformation by a 2D column vector $mat(x;y)$ had shown me how much information could be encoded in even the simplest matrix. Thus, I started to try and find a combination of rotations and squeezes that could solve the problem. But of course, affine transformations are only half the puzzle. They are extremely nice and satisfying for simple changes, but for the conversions of arbitrary shapes, it was not possible. Therefore, for non-affine transformations, I initially began by just using Cartesian coordinates, but I realised that homogenous coordinates were far better because of their ability to encode perspective with a single value. They would also be useful in adding translation directly to the matrix, which is needed when the coordinates for the final rectangle could be anywhere. Then, I was able to with some manipulation and effort, obtain the results indicated elsewhere on the internet and my references. 
 
+  During the entire process, I aimed to include as many proofs as possible, to ensure that my answer was "rigourously" derived, as is the nature of Mathematics. I am quite pleased that this was possible, and am also proud of the code I used to create the examples and graphics demonstrations needed; not only did it help the exploration be more clear, it helped me ensure that my derivations were actually correct. 
+
+  Despite this, I think some flaws still persist in the final solution. I did not prove that the method of using a "homography matrix" is applicable to any arbitrary convex quadrilateral, but rather assumed this would be the case as a corollary of the fact that the matrix acts as a transformation between any two planes. While this seems correct, it would be more satisfying to be able to prove correctness in a blanket statement. Another limitation is that I restricted my study to convex quadrilaterals, because concave quadrilaterals often follow patterns unlike those found in convex shapes. I would like to furter investigate in the future whether my solution holds truly generally, and if not, what changes might be made so that this is possible.
+
+  Nevertheless, my research question was answered fully, and I thus believe this investigation  to be success. 
+  
   = Conclusion
-  Looking at our example above, we can see that we have found a method for finding $T$, and have thus answered the research question. 
+  Looking at our example above, we can see that we have found a method for finding $T$ in @researchquestion (reproduced below), and have thus answered the research question. 
   
   #figure(
   grid(
