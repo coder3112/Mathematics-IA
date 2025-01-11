@@ -90,6 +90,8 @@
   $
   ])<transform_basiceq>
 
+  The following derivation takes inspiration from @Wren_1998. 
+
   Now, we are going to first convert the Cartesian coordinates $(X, Y)$ and $(x, y)$ from @plane_ray_fig into homogeneous coordinates to take advantage of the features they provide. Since the scaling of a point does not matter in homogeneous coordinates(all of them indicate to the same point as seen in @illustrationhomo), we can actually write with arbitrary $W in RR$ (Note that we implicitly convert $(x,y)$ to homogeneous coordinates as discussed in @convert_cart_homo :
   $
   mat(X W; Y W; W;)

@@ -30,7 +30,7 @@
 #affine
 #non_affine
 #pagebreak(weak: true)
-#bibliography("main.bib")
+#bibliography("main.bib", full: true)
 #pagebreak(weak: true)
 #appendix_code
 // #pagebreak(weak: true)

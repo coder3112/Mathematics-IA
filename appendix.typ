@@ -3,9 +3,8 @@
   #set heading(numbering: none)
   = Appendix A: Code Used
   #show link: underline
-  Inspired by *cite actual* #link("https://articulatedrobotics.xyz/tutorials/coordinate-transforms/rotation-matrices-2d/")
   == Rotation Matrices
-  For @rotmatfig
+  Inspired by @Program. For @rotmatfig
   #v(8pt)
   #let rot_code = read("rot_matrix.m")
   #show raw: it => text(it, font: "IBM Plex Mono")
