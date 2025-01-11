@@ -102,7 +102,7 @@ These matrices are symmetric.
   $
 ]
 
-Next, we consider the eigenvectors of each. The eigenvectors of $S_L$ are called the _left singular vectors_. Those of $S_R$ are called _right singular vectors_
+Next, we consider the eigenvectors of each. The eigenvectors of $S_L$ are called the _left singular vectors_. Those of $S_R$ are called _right singular vectors_.
 
 Next, we use the fact that $S_L$ and $S_R$ are _Positive Definite Matrices_. This simply implies that if we take their eigenvalues, then:
 + All eigenvalues are non negative, i.e. $lambda gt.eq 0$
