@@ -14,7 +14,7 @@
     numbers: true,
     caption: "Code: rot_matrix.m",
   )[#raw(rot_code, lang: "matlab")]
-
+  #pagebreak(weak: true)
   == Squeeze Matrices
   For @squeeze_output_mat
   #v(8pt)

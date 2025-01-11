@@ -222,10 +222,10 @@
     grid(
       columns: 2,
       figure(
-        image("final.png", height: 35%)
+        image("final.png", height: 55%)
       ),
       figure(
-        image("final2.png", height: 35%)
+        image("final2.png", height: 55%)
       ),
     ),
     caption: "Homography matrix calculated using Inverse and SVD respectively"

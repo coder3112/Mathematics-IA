@@ -281,7 +281,7 @@
   )
   $
   We can also confirm this with matrix multiplication on the computer:
-  #figure(caption: "Scaled matrix confirmation", image("scale_matrix.png", height: 42%))<scale_output_mat>
+  #figure(caption: "Scaled matrix confirmation", image("scale_matrix.png", height: 60%))<scale_output_mat>
 
   == Combination of Affine Transforms
   Finally, one can combine the above transformations through matrix multiplication in order to obtain a more complex affine transform. For instance, if a shape were to be transformed such that it was was scaled by a factor of 2 and rotated by 45 degrees, we would simply use the transformation matrix:
