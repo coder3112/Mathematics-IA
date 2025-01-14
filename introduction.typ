@@ -39,9 +39,6 @@ $A B C D$ with vertices at $A(x_A, y_A)$, $B(x_B, y_B)$, $C(x_C, y_C)$, $D(x_D, 
 
 $A'B'C'D'$ with vertices at $A'(x_A', y_A')$, $B'(x_B', y_B')$, $C'(x_C', y_C')$, $D'(x_D', y_D')$
 
-
-#colbreak()
-
 #figure(
 grid(
   columns: (1fr, 1fr),

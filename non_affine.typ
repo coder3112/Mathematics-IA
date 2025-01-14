@@ -15,7 +15,7 @@
   
   #figure(
     //http://www.songho.ca/math/homogeneous/homogeneous.html
-    caption: [Each of the points on the orange line are equivalent in homogeneous coordinates. Source: songho],
+    caption: [Each of the points on the orange line are equivalent in homogeneous coordinates. Source: @songho],
     image("homogeneous_coordinates_example.png", width: 40%),
   )<illustrationhomo>
   
@@ -79,7 +79,8 @@
   Refer back to @projective_transform. Now, we aim to construct a relation between the two planes, $p_1$ and $p_2$.
 
   Another way to visualise this is like so:
-  #figure(image("perspectivetransform.png", height: 30%), caption: "Source: Christopher R. Wren")<plane_ray_fig>
+  #figure(image("perspectivetransform.png", height: 30%), caption: [Source: Christopher R. Wren in @Wren_1998])<plane_ray_fig>
+  
 
   Here. $x, y$ represent the initial coordinates on $p_1$, while $X,Y$ represent the final coordinates on $p_2$ after transformation.
 
